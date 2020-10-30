@@ -63,7 +63,10 @@ namespace google {
 namespace protobuf {
 namespace internal {
 
-#if defined(GOOGLE_PROTOBUF_ARCH_POWER)
+#if TARGET_OS_WATCH && !TARGET_OS_SIMULATOR
+typedef intptr_t Atomic32;
+typedef int64 Atomic64;
+#elif defined(GOOGLE_PROTOBUF_ARCH_POWER)
 #if defined(_LP64) || defined(__LP64__)
 typedef int32 Atomic32;
 typedef intptr_t Atomic64;
