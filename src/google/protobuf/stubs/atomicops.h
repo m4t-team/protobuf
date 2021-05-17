@@ -181,6 +181,11 @@ Atomic64 Release_Load(volatile const Atomic64* ptr);
 // ThreadSanitizer, http://clang.llvm.org/docs/ThreadSanitizer.html.
 #if defined(THREAD_SANITIZER)
 #include <google/protobuf/stubs/atomicops_internals_tsan.h>
+
+// Apple Watch
+#elif defined(TARGET_OS_WATCH)
+#include <google/protobuf/stubs/atomicops_internals_generic_c11_atomic.h>
+
 // MSVC.
 #elif defined(_MSC_VER)
 #if defined(GOOGLE_PROTOBUF_ARCH_IA32) || defined(GOOGLE_PROTOBUF_ARCH_X64) || defined(GOOGLE_PROTOBUF_ARCH_ARM)
